@@ -1,5 +1,5 @@
 token: "xxxxxxxxxxxxxxxx"    # lishogi OAuth2 Token
-url: "http://localhost:9663" # localhost
+url: "http://localhost:9663" # localhost, don't forget https for lishogi.org
 
 botname: "Random mover"
 
