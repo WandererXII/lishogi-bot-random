@@ -182,9 +182,9 @@ def play_game(li, game_id, control_queue, user_profile, config, challenge_queue)
                         play_first_move(game, board, li)
                         deferredFirstMove = False
                 if board.turn == shogi.BLACK:
-                    game.ping(config.get("abort_time", 20), (upd["wtime"] + upd["winc"]) / 1000 + 60)
-                else:
                     game.ping(config.get("abort_time", 20), (upd["btime"] + upd["binc"]) / 1000 + 60)
+                else:
+                    game.ping(config.get("abort_time", 20), (upd["wtime"] + upd["winc"]) / 1000 + 60)
             elif u_type == "ping":
                 if game.should_abort_now():
                     logger.info("    Aborting {} by lack of activity".format(game.url()))
@@ -226,7 +226,7 @@ def play_first_move(game, board, li):
 
 def setup_board(game):
     if game.variant_name == "From Position":
-        board = shogi.Board(makesfenfromfen(game.initial_fen))
+        board = shogi.Board(game.initial_fen)
     else:
         board = shogi.Board() # Standard
     moves = game.state["moves"].split()
@@ -236,12 +236,12 @@ def setup_board(game):
     return board
 
 
-def is_white_to_move(game, moves):
-    return len(moves) % 2 == (0 if game.white_starts else 1)
+def is_sente_to_move(game, moves):
+    return len(moves) % 2 == (0 if game.sente_starts else 1)
 
 
 def is_engine_move(game, moves):
-    return game.is_white == is_white_to_move(game, moves)
+    return game.is_sente == is_sente_to_move(game, moves)
 
 
 def is_game_over(game):
