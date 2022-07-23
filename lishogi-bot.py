@@ -249,20 +249,20 @@ def is_game_over(game):
 
 
 def update_board(board, move):
-    usi_move = shogi.Move.from_usi(makeusi(move))
+    usi_move = shogi.Move.from_usi(move)
     if board.is_legal(usi_move):
         board.push(usi_move)
     else:
-        logger.debug('Ignoring illegal move {} on board {}'.format(makeusi(move), board.sfen()))
+        logger.debug('Ignoring illegal move {} on board {}'.format(move, board.sfen()))
     return board
 
 def intro():
     return r"""
-    .   _/|
-    .  // o\
-    .  || ._)  lishogi-bot %s
-    .  //__\
-    .  )___(   Play on Lishogi with a bot
+    .
+    .
+    . lishogi-bot %s
+    .
+    . Play on Lishogi with a bot
     """ % __version__
 
 if __name__ == "__main__":
