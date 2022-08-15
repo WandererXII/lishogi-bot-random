@@ -18,7 +18,6 @@ from functools import partial
 from requests.exceptions import ChunkedEncodingError, ConnectionError, HTTPError, ReadTimeout
 from urllib3.exceptions import ProtocolError
 from ColorLogger import enable_color_logging
-from util import *
 import copy
 import move_gen
 
@@ -217,7 +216,7 @@ def play_game(li, game_id, control_queue, user_profile, config, challenge_queue)
 def play_first_move(game, board, li):
     moves = game.state["moves"].split()
     if is_engine_move(game, moves):
-        # need to hardcode first movetime since Lichess has 30 sec limit.
+        # need to hardcode first movetime since Lishogi has 30 sec limit.
         rand_move = move_gen.random_move(board)
         li.make_move(game.id, rand_move)
         return True
