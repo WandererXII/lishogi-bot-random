@@ -25,7 +25,7 @@ class Conversation():
         elif cmd == "name":
             self.send_reply(line, "{} (lishogi-bot v{})".format(self.move_gen, self.version))
         elif cmd == "howto":
-            self.send_reply(line, "How to run your own bot: lichess.org/api#tag/Chess-Bot")
+            self.send_reply(line, "How to run your own bot: lishogi.org/api#tag/Bot")
         elif cmd == "eval" and line.room == "spectator":
             self.send_reply("I just pick at random dude.")
         elif cmd == "eval":

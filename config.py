@@ -21,6 +21,6 @@ def load_config(config_file):
                 raise Exception(section[2])
 
         if CONFIG["token"] == "xxxxxxxxxxxxxxxx":
-            raise Exception("Your config.yml has the default Lichess API token. This is probably wrong.")
+            raise Exception("Your config.yml has the default Lishogi API token. This is probably wrong.")
 
     return CONFIG
